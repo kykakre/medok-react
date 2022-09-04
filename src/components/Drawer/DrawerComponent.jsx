@@ -59,17 +59,21 @@ export default function DrawerComponent(props) {
               visible={visible}
             />
           </SwiperSlide>
-          <SwiperSlide className='slide'>
-              <Type
+          <SwiperSlide className="slide">
+            <Type
               doctor={props.doctor}
+              comments={props.comments}
               type={props.type}
               setVisible={setVisible}
               visible={visible}
-          />
+            />
           </SwiperSlide>
-          <SwiperSlide className="slide"><PersonInfo doctor={props.doctor} type={props.type} /></SwiperSlide>
-            <SwiperSlide className="slide"><Access setVisible={setVisible}
-                                                   visible={visible}/></SwiperSlide>
+          <SwiperSlide className="slide">
+            <PersonInfo doctor={props.doctor} type={props.type} />
+          </SwiperSlide>
+          <SwiperSlide className="slide">
+            <Access setVisible={setVisible} visible={visible} />
+          </SwiperSlide>
         </Swiper>
       </Drawer>
     </>

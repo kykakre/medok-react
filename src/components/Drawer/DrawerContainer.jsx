@@ -4,7 +4,8 @@ let mapStateToProps = (state) => {
   return {
     service: state.serviceReducer.service,
     doctor: state.doctorReducer.doctor,
-    type:state.typeReducer.type,
+    type: state.typeReducer.type,
+    comments: state.commentsReducer.comments,
   };
 };
 
