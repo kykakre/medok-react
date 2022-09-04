@@ -1,0 +1,78 @@
+@import "../../style/Mixins.scss";
+
+.formItem {
+  width: 48%;
+  margin-bottom: 30px;
+
+}
+.formSelect{
+  width: max-content;
+  height: 40px;
+  padding-left: 15px;
+  border: none;
+  background: #ececec;
+  border-radius: 10px 0px 0px 10px;
+}
+.selectInput{
+  width: 150px;
+  height: 40px;
+  padding-left: 5px;
+  border-radius: 0 10px 10px 0;
+  border: none;
+  background: #fafafa;
+}
+.formItemMax{
+    width: 100%;
+}
+.formTitle {
+  font-weight: 500;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+.formInput{
+    font-family: "Inter";
+    border: none;
+    color: #666;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background: #fafafa;
+    border-radius: 10px;
+    width: 100%;
+    padding-left: 14px;
+    &::placeholder {
+      color: #999999;
+    }
+}
+.formFlex{
+    display: flex;
+    align-items: center;
+}
+.formIcon{
+  @include fluid(width, 15px, 20px);
+  @include fluid(height, 15px, 20px);
+  object-fit: contain;
+  margin-right: 5px;
+}
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 35px;
+
+
+
+
+
+}
+.description {
+  text-align: center;
+  color: #666666;
+  font-size: 11px;
+  margin-top: 20px;
+  line-height: 150%;
+  a {
+    color: #ff6d50;
+  }
+}
