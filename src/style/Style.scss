@@ -358,3 +358,25 @@ body {
     object-fit: contain;
   }
 }
+@media screen and (max-width: 576px){
+  .ant-drawer-content-wrapper {
+
+    width: 100% !important;
+  }
+  .slide{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .ant-modal{
+    margin: 0 auto;
+    width: 320px !important;
+  }
+  .ant-modal-content{
+    width: 320px !important;
+  }
+  .ant-modal-body{
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 320px !important;
+  }
+}

@@ -1,5 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import micro from "../../assets/img/microphone-voice-recording.png"
+import {GetDoctors, GetDoctorVisitType} from "../../api/api.js";
+import {doctorSlice} from "./doctorSlice.js";
 const initialState = {
   type: [
     {
@@ -58,7 +60,21 @@ const initialState = {
 export const typeSlice = createSlice({
   name: "type",
   initialState,
-  reducers: {},
+  reducers: {
+    GetDoctorVisitType(state, action) {
+      state.type = action.payload;
+    },
+  },
 });
+
+export const GetVisitTypePost = (
+    specializationId,doctorId
+) => {
+  return async (dispatch) => {
+    const response = await GetDoctorVisitType(specializationId,doctorId);
+    dispatch(typeSlice.actions.GetDoctorVisitType(response));
+  };
+};
+
 
 export default typeSlice.reducer;

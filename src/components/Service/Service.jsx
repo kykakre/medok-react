@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Search from "../Search/Search";
 import Title from "../Title/Title";
 import ServiceItem from "./ServiceItem";
@@ -7,15 +7,15 @@ import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 import ServiceBanner from "./ServiceBanner/ServiceBanner";
 import { Checkbox } from "antd";
 export default function Service(props) {
-  const item = props.service.map((e) => (
-    <ServiceItem
-      id={e.id}
-      key={e.id}
-      title={e.title}
-      type={e.type}
-      icon={e.icon}
-    />
-  ));
+    let item = props.service.map((e) => (
+        <ServiceItem
+            Id={e.Id}
+            key={e.Id}
+            Title={e.Title}
+            GetDoctorPost={props.GetDoctorPost}
+            setServiceId={props.setServiceId}
+        />));
+
   return (
     <>
       <Title
@@ -24,7 +24,7 @@ export default function Service(props) {
         setVisible={props.setVisible}
         visible={props.visible}
       />
-      <Search />
+      <Search GetServicesPost={props.GetServicesPost}/>
       <Tabs>
         <TabList className={style.tabs}>
           <div className={style.tabsFlex}>

@@ -9,7 +9,7 @@ export const GetServices = async (searchQuery) => {
 export const GetDoctors = async (specializationId) => {
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Doctors/GetDoctorsBySpecializationId",
         {RequestData: {SpecializationId: specializationId}});
-    return response.data.ResponseData.ListOfDoctors;
+    return response.data.ResponseData;
 }
 
 export const GetDoctorVisitType = async (specializationId, doctorId) => {
@@ -29,3 +29,4 @@ export const CreateMessageForConsultation = async (request) => {
         {RequestData: request});
     return response.data.ResponseData.Consultations;
 }
+

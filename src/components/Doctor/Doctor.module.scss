@@ -114,3 +114,30 @@
   color: #666;
   font-weight: 700;
 }
+@media screen and (max-width: 576px) {
+
+  .card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 15px;
+    margin-right: 0;
+  }
+  .title {
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+    .position {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  .text{
+    width: 100%;
+  }
+
+}

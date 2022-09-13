@@ -5,6 +5,8 @@ import PersonForm from "./PersonForm.jsx";
 import PersonDescription from "./PersonDescription.jsx";
 
 const PersonInfo = (props) => {
+    debugger
+
     return (
         <>
             <Title
@@ -13,7 +15,7 @@ const PersonInfo = (props) => {
                 setVisible={props.setVisible}
                 visible={props.visible}
             />
-            <PersonInfoDoctor doctor={props.doctor[0]} type={props.type[0]}/>
+            <PersonInfoDoctor doctor={props.doctor[props.doctorId]} type={props.type[props.serviceId]}/>
             <PersonForm/>
             <PersonDescription/>
         </>

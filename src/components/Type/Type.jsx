@@ -9,14 +9,20 @@ const Type = (props) => {
     <TypeItem
       id={e.id}
       key={e.id}
-      title={e.title}
-      subtitle={e.subtitle}
+      Title={e.Title}
+      Duration={e.Duration}
       icon={e.icon}
       valute={e.valute}
       cash={e.cash}
     />
   ));
-  return (
+
+    let notType = (<div className={style.not}>Данный врач не обслуживает пациентов</div> )
+    const filterTranslation = props.doctor.filter((e) => {
+        return e.Id == props.doctorId;
+    });
+
+    return (
     <div>
       <Title
         arrow={true}
@@ -24,11 +30,11 @@ const Type = (props) => {
         setVisible={props.setVisible}
         visible={props.visible}
       />
-      <TypeDoctor comments={props.comments} doctor={props.doctor[0]} />
+        <TypeDoctor comments={props.comments} doctor={filterTranslation[0]?filterTranslation[0] :  props.doctor} />
+
       <TypeBanner />
-      <div className={style.typeContainer}>{typeItem}</div>
+      <div className={style.typeContainer}> {typeItem[0]?typeItem:notType }</div>
     </div>
   );
 };
-
 export default Type;

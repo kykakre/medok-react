@@ -5,19 +5,17 @@ import style from "./Doctor.module.scss";
 export default function Doctor(props) {
   const item = props.doctor.map((e) => (
     <DoctorItem
-      id={e.id}
-      key={e.id}
-      avatar={e.avatar}
-      name={e.name}
-      srname={e.surname}
-      lastname={e.lastname}
-      type={e.type}
-      experiens={e.experiens}
-      degree={e.degree}
-      review={e.review}
-      grabe={e.grabe}
-      category={e.category}
-
+      Id={e.Id}
+      key={e.Id}
+      AvatarImagePath={e.AvatarImagePath}
+      Name={e.Name}
+      Surname={e.Surname}
+      PatronymicName={e.PatronymicName}
+      WorkStartDate={e.WorkStartDate}
+      doctorSpecial={props.doctorSpecial}
+      GetVisitTypePost={props.GetVisitTypePost}
+      serviceId={props.serviceId}
+      setDoctorId={props.setDoctorId}
     />
   ));
   return (

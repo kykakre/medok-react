@@ -1,73 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 import avatar from "../../assets/img/avatarDoctor.png";
+import {GetDoctors, GetServices} from "../../api/api.js";
+import {serviceSlice} from "./serviceSlice.js";
 const initialState = {
-  doctor: [
-    {
-      id: 1,
-      avatar: avatar,
-      name: "Григорий",
-      surname: "Иванович",
-      lastname: "Домин",
-      type: "Терапевт",
-      experiens: "12 лет",
-      degree: "Доктор наук",
-      review: 5,
-      grabe: 3.5,
-      category: "II",
-    },
-    {
-      id: 2,
-      avatar: avatar,
-      name: "Григорий",
-      surname: "Иванович",
-      lastname: "Домин",
-      type: "Терапевт",
-      experiens: "12 лет",
-      degree: "Доктор наук",
-      review: 5,
-      grabe: 3.5,
-      category: "II",
-    },
-    {
-      id: 3,
-      avatar: avatar,
-      name: "Григорий",
-      surname: "Иванович",
-      lastname: "Домин",
-      type: "Терапевт",
-      experiens: "12 лет",
-      degree: "Доктор наук",
-      review: 5,
-      grabe: 3.5,
-      category: "II",
-    },
-    {
-      id: 4,
-      avatar: avatar,
-      name: "Григорий",
-      surname: "Иванович",
-      lastname: "Домин",
-      type: "Терапевт",
-      experiens: "12 лет",
-      degree: "Доктор наук",
-      review: 5,
-      grabe: 3.5,
-      category: "II",
-    },
-    {
-      id: 5,
-      avatar: avatar,
-      name: "Григорий",
-      surname: "Иванович",
-      lastname: "Домин",
-      type: "Терапевт",
-      experiens: "12 лет",
-      degree: "Доктор наук",
-      review: 5,
-      grabe: 3.5,
-      category: "II",
-    },
-  ],
+  doctor:{
+    SpecializationTitle:"",
+    ListOfDoctors:[
+      {
+        Id: 1,
+        AvatarImagePath: avatar,
+        Name: "Григорий",
+        PatronymicName: "Иванович",
+        Surname: "Домин",
+
+      },
+    ]
+  },
+
+
+
+
+
+
+
   isLoading: false,
   error: "",
 };
@@ -75,7 +30,21 @@ const initialState = {
 export const doctorSlice = createSlice({
   name: "doctor",
   initialState,
-  reducers: {},
+  reducers: {
+    GetDoctors(state, action) {
+      state.doctor = action.payload;
+    },
+  }
 });
+
+export const GetDoctorPost = (
+    specializationId
+) => {
+  return async (dispatch) => {
+    const response = await GetDoctors(specializationId);
+    dispatch(doctorSlice.actions.GetDoctors(response));
+  };
+};
+
 
 export default doctorSlice.reducer;
