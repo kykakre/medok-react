@@ -20,11 +20,11 @@ export const serviceSlice = createSlice({
 });
 
 export const GetServicesPost = (
-    searchQuery
+    searchQuery,specializationType,isPremium
 ) => {
   return async (dispatch) => {
 
-    const response = await GetServices(searchQuery);
+    const response = await GetServices( searchQuery,specializationType,isPremium);
     dispatch(serviceSlice.actions.GetServices(response));
   };
 };

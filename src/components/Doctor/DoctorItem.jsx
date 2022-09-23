@@ -10,7 +10,7 @@ export default function DoctorItem(props) {
   const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
   return <div className={style.card}>
     <div className={style.position}>
-      <img className={style.avatar} src={avatar}/>
+      <img className={style.avatar} src={"https://plugin-medok.spaceapp.ru" + props.AvatarImagePath}/>
       <div className={style.text}>
         <div className={style.title}>
           <div className={style.name}>{props.Name}</div>

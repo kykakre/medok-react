@@ -6,14 +6,6 @@ const initialState = {
   doctor:{
     SpecializationTitle:"",
     ListOfDoctors:[
-      {
-        Id: 1,
-        AvatarImagePath: avatar,
-        Name: "Григорий",
-        PatronymicName: "Иванович",
-        Surname: "Домин",
-
-      },
     ]
   },
 

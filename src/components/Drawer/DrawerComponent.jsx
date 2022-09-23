@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { Drawer, Button } from "antd";
 import { Virtual } from 'swiper';
 import { Navigation } from "swiper";
@@ -8,20 +8,29 @@ import Doctor from "../Doctor/Doctor";
 import Type from "../Type/Type.jsx";
 import PersonInfo from "../PersonInfo/PersonInfo.jsx";
 import Access from "../Access/Access.jsx";
+import {GetSpecializationPost} from "../../store/slice/specializationSlice.js";
 export default function DrawerComponent(props) {
   const [visible, setVisible] = useState(false);
   const[serviceId,setServiceId] = useState();
   const[ doctorId,setDoctorId] = useState()
-  console.log(props.type)
+  console.log(props.specialization)
+
+    useEffect(() =>{
+        props.GetSpecializationPost();
+    }, [])
   const showDrawer = () => {
     setVisible(true);
   };
-  const onClose = () => {
+
+    const onClose = () => {
     setVisible(false);
   };
+
   return (
     <>
-      <Button type="primary" onClick={showDrawer} >
+      <Button type="primary" onClick={()=>{
+          showDrawer();
+      }} >
         Открыть дравер
       </Button>
       <Drawer
@@ -49,6 +58,7 @@ export default function DrawerComponent(props) {
         >
           <SwiperSlide className="slide" virtualIndex={1}>
             <Service
+                specialization={props.specialization}
                 GetDoctorPost={props.GetDoctorPost}
                 GetServicesPost={props.GetServicesPost}
               setVisible={setVisible}

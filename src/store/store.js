@@ -5,12 +5,14 @@ import doctorReducer from "./slice/doctorSlice";
 import typeReducer from "./slice/typeSlice";
 import contentReducer from "./slice/contentSlice";
 import commentsReducer from "./slice/commentsSlice";
+import specializationReducer from "./slice/specializationSlice";
 const rootReducer = combineReducers({
   serviceReducer,
   doctorReducer,
   typeReducer,
   contentReducer,
   commentsReducer,
+  specializationReducer,
 });
 
 export const setupStore = () => {

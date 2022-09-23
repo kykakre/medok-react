@@ -8,7 +8,7 @@ export default function ServiceItem(props) {
   return (
     <div className={style.card}>
       <div className={style.cardFlex}>
-        <img className={style.cardIcon} src={travm} />
+        <img className={style.cardIcon} src={"https://plugin-medok.spaceapp.ru" + props.PathToSpecializationAvatar} />
         <div>
           <div className={style.cardTitle}>{props.Title}</div>
           <div className={style.cardType}>{props.Title}</div>
