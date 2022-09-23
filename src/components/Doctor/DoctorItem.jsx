@@ -1,21 +1,23 @@
 import React from "react";
 import style from "./Doctor.module.scss"
-import star from "../../assets/img/star.svg"
-import message from "../../assets/img/message.svg"
 import avatar from "../../assets/img/avatarDoctor.png"
-
 import { useSwiper } from 'swiper/react';
+import {doctorSlice} from "../../store/slice/doctorSlice.js";
+import {useDispatch} from "react-redux";
+import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
+
 export default function DoctorItem(props) {
+  const dispatch = useDispatch();
   const swiper = useSwiper();
   const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
   return <div className={style.card}>
     <div className={style.position}>
-      <img className={style.avatar} src={"https://plugin-medok.spaceapp.ru" + props.AvatarImagePath}/>
+      <img className={style.avatar} src={props.CurrentDoctor?.AvatarImagePath ? "https://medok-dev.spaceapp.ru/" + props.CurrentDoctor.AvatarImagePath : avatar}/>
       <div className={style.text}>
         <div className={style.title}>
-          <div className={style.name}>{props.Name}</div>
-          <div className={style.name}>{props.PatronymicName}</div>
-          <div className={style.name}>{props.Surname}</div>
+          <div className={style.name}>{props.CurrentDoctor?.Name}</div>
+          <div className={style.name}>{props.CurrentDoctor?.PatronymicName}</div>
+          <div className={style.name}>{props.CurrentDoctor?.Surname}</div>
         </div>
         <div className={style.specifical}>{props.doctorSpecial}</div>
         {/*<div className={style.grade}>*/}
@@ -48,9 +50,10 @@ export default function DoctorItem(props) {
       </div>
     </div>
     <div className="next arrow arrow--red" onClick={()=> {
-      swiper.slideNext()
-      props.GetVisitTypePost(props.serviceId,props.Id)
+      dispatch(doctorSlice.actions.SetDoctor(props.CurrentDoctor));
+      props.GetVisitTypePost(1, props.serviceId,props.Id)
       props.setDoctorId(props.Id)
+      swiper.slideNext();
 
     }}>
       <div className={style.arrowIcon}></div>

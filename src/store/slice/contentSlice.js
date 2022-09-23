@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {CreateMessageForConsultation, GetDoctors} from "../../api/api.js";
+import {doctorSlice} from "./doctorSlice.js";
 
 const initialState = {
   content: [],
@@ -11,5 +13,13 @@ export const contentSlice = createSlice({
   initialState,
   reducers: {},
 });
+
+export const SendMessagePost = (
+    request,
+) => {
+  return async () => {
+    const response = await CreateMessageForConsultation(request);
+  };
+};
 
 export default contentSlice.reducer;

@@ -2,18 +2,16 @@ import React from "react";
 import Title from "../Title/Title";
 import DoctorItem from "./DoctorItem";
 import style from "./Doctor.module.scss";
+import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
 export default function Doctor(props) {
-  const item = props.doctor.map((e) => (
+  const item = props.doctors.map((e) => (
     <DoctorItem
       Id={e.Id}
       key={e.Id}
-      AvatarImagePath={e.AvatarImagePath}
-      Name={e.Name}
-      Surname={e.Surname}
-      PatronymicName={e.PatronymicName}
-      WorkStartDate={e.WorkStartDate}
+      CurrentDoctor={e}
       doctorSpecial={props.doctorSpecial}
       GetVisitTypePost={props.GetVisitTypePost}
+      GetDoctorsConsultationsByMainTypePost={props.GetDoctorsConsultationsByMainTypePost}
       serviceId={props.serviceId}
       setDoctorId={props.setDoctorId}
     />

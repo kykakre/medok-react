@@ -7,7 +7,6 @@ export const GetSpecializationTypes = async()=>{
 }
 
 export const GetServices = async (searchQuery, specializationType, isPremium,) => {
-    console.log(specializationType)
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Specializations/GetSpecializations",
         {"RequestData": {TitleSearchString: searchQuery,SpecializationType:specializationType, IsPremium: isPremium}});
     return response.data.ResponseData.ListOfSpecializations;
@@ -25,15 +24,26 @@ export const GetDoctorVisitType = async (pageNumber ,specializationId, doctorId)
     return response.data.ResponseData.ListOfTypes;
 }
 
-export const GetDoctorsConsultationsByMainType = async (pageNumber, specializationId, doctorId, consultationMainType) => {
-    const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Consultations/GetDoctorsConsultationsByMainType",
-        {RequestData: {PageNumber:pageNumber, SpecializationId: specializationId, DoctorId: doctorId, ConsultationMainType:consultationMainType}});
-    return response.data.ResponseData.Consultations;
+export const GetDoctorsConsultationsByMainType = async (pageNumber, specializationId, doctorId, consultationMainTypes ) => {
+
+    if (consultationMainTypes.length !== 0){
+        let consultations = [];
+         for (const item of consultationMainTypes) {
+            const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Consultations/GetDoctorsConsultationsByMainType",
+                {RequestData: {PageNumber:pageNumber, SpecializationId: specializationId, DoctorId: doctorId, ConsultationMainType:item}});
+            if (response.data.ResponseData.Consultations.length !== 0){
+                consultations = consultations.concat(response.data.ResponseData.Consultations);
+            }
+        }
+        return consultations;
+    }
+    else return [];
+
 }
 
 export const CreateMessageForConsultation = async (request) => {
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Service/CreateMessageForConsultation",
         {RequestData: request});
-    return response.data.ResponseData.Consultations;
+    return response.data.ResponseData;
 }
 

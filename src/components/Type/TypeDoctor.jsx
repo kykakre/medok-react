@@ -19,46 +19,58 @@ const TypeDoctor = (props) => {
   //     comment={e.comment}
   //   />
   // ));
-  const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
+  const date = props.CurrentDoctor?.WorkStartDate ? new Date().getFullYear() - new Date(props.CurrentDoctor?.WorkStartDate).getFullYear() : "меньше года";
 
   return (
     <div className={style.card}>
       <div className={style.position}>
-        <img className={style.avatar} src={avatar} />
+        <img className={style.avatar} src={props.CurrentDoctor?.AvatarImagePath ? "https://medok-dev.spaceapp.ru/" + props.CurrentDoctor?.AvatarImagePath : avatar} />
         <div className={style.text}>
           <div className={style.title}>
-            <div className={style.name}>{props.doctor.Name}</div>
-            <div className={style.name}>{props.doctor.PatronymicName}</div>
-            <div className={style.name}>{props.doctor.Surname}</div>
+            <div className={style.name}>{props.CurrentDoctor?.Name}</div>
+            <div className={style.name}>{props.CurrentDoctor?.PatronymicName}</div>
+            <div className={style.name}>{props.CurrentDoctor?.Surname}</div>
           </div>
-          <div className={style.specifical}>{props.doctor.type}</div>
+          <div className={style.specifical}>{props.CurrentDoctor?.doctorSpecial}</div>
           <div className={style.grade}>
-            {/*<div className={style.item}>*/}
-            {/*  <img src={star} className={style.itemIcon} />*/}
-            {/*  <div className={style.itemText}>3,5</div>*/}
-            {/*</div>*/}
-            {/*<div className={style.item}>*/}
-            {/*  <img src={message} className={style.itemIcon} />*/}
-            {/*  <div*/}
-            {/*    className={style.itemText}*/}
-            {/*    onClick={() => setModalIsOpen(true)}*/}
-            {/*  >*/}
-            {/*    {props.doctor.review} отзывов*/}
-            {/*  </div>*/}
-            {/*</div>*/}
+            <div className={style.item}>
+              <img src={star} className={style.itemIcon} />
+              <div className={style.itemText}>3,5</div>
+            </div>
+            <div className={style.item}>
+              <img src={message} className={style.itemIcon} />
+              <div
+                className={style.itemText}
+                onClick={() => setModalIsOpen(true)}
+              >
+                {props.CurrentDoctor?.review} отзывов
+              </div>
+            </div>
           </div>
           <div className={style.info}>
             {/*<div className={style.infoItem}>*/}
             {/*  <div className={style.infoTitle}>Степень</div>*/}
-            {/*  <div className={style.infoText}>{props.doctor.degree}</div>*/}
+            {/*  <div className={style.infoText}>{props.CurrentDoctor.degree}</div>*/}
             {/*</div>*/}
             <div className={style.infoItem}>
               <div className={style.infoTitle}>Стаж(в годах)</div>
               <div className={style.infoText}> {date} </div> </div>
-            {/*<div className={style.infoItem}>*/}
-            {/*  <div className={style.infoTitle}>Категория</div>*/}
-            {/*  <div className={style.infoText}>{props.doctor.category}</div>*/}
-            {/*</div>*/}
+            {
+              props.CurrentDoctor?.QualificationCategory ?
+                <div className={style.infoItem}>
+                  <div className={style.infoTitle}>Категория</div>
+                  <div className={style.infoText}>{props.CurrentDoctor?.QualificationCategory}</div>
+                </div>
+                :null
+            }
+            {
+              props.CurrentDoctor?.ScientificDegree ?
+                  <div className={style.infoItem}>
+                    <div className={style.infoTitle}>Степень</div>
+                    <div className={style.infoText}>{ props.CurrentDoctor?.ScientificDegree}</div>
+                  </div>
+                  :null
+            }
           </div>
         </div>
       </div>

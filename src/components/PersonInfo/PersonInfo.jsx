@@ -3,10 +3,9 @@ import Title from "../Title/Title.jsx";
 import PersonInfoDoctor from "./PersonInfoDoctor.jsx";
 import PersonForm from "./PersonForm.jsx";
 import PersonDescription from "./PersonDescription.jsx";
+import {SendMessagePost} from "../../store/slice/contentSlice.js";
 
 const PersonInfo = (props) => {
-    debugger
-
     return (
         <>
             <Title
@@ -15,8 +14,11 @@ const PersonInfo = (props) => {
                 setVisible={props.setVisible}
                 visible={props.visible}
             />
-            <PersonInfoDoctor doctor={props.doctor[props.doctorId]} type={props.type[props.serviceId]}/>
-            <PersonForm/>
+            <PersonInfoDoctor
+                CurrentDoctor={props.CurrentDoctor}
+                doctorSpecial={props.doctorSpecial}
+                CurrentVisitType={props.CurrentVisitType}/>
+            <PersonForm doctorId={props.doctorId} visitId={props.CurrentVisitType?.id} SendMessagePost={props.SendMessagePost}/>
             <PersonDescription/>
         </>
     );

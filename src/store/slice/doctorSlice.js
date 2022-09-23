@@ -8,13 +8,7 @@ const initialState = {
     ListOfDoctors:[
     ]
   },
-
-
-
-
-
-
-
+  CurrentDoctor:null,
   isLoading: false,
   error: "",
 };
@@ -26,14 +20,18 @@ export const doctorSlice = createSlice({
     GetDoctors(state, action) {
       state.doctor = action.payload;
     },
+    SetDoctor(state, action) {
+      state.CurrentDoctor = action.payload;
+    },
   }
 });
 
 export const GetDoctorPost = (
+    pageNumber,
     specializationId
 ) => {
   return async (dispatch) => {
-    const response = await GetDoctors(specializationId);
+    const response = await GetDoctors(pageNumber, specializationId);
     dispatch(doctorSlice.actions.GetDoctors(response));
   };
 };

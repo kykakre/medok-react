@@ -8,12 +8,12 @@ import Doctor from "../Doctor/Doctor";
 import Type from "../Type/Type.jsx";
 import PersonInfo from "../PersonInfo/PersonInfo.jsx";
 import Access from "../Access/Access.jsx";
-import {GetSpecializationPost} from "../../store/slice/specializationSlice.js";
+import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
+import {SendMessagePost} from "../../store/slice/contentSlice.js";
 export default function DrawerComponent(props) {
   const [visible, setVisible] = useState(false);
   const[serviceId,setServiceId] = useState();
-  const[ doctorId,setDoctorId] = useState()
-  console.log(props.specialization)
+  const[ doctorId,setDoctorId] = useState(0)
 
     useEffect(() =>{
         props.GetSpecializationPost();
@@ -73,28 +73,39 @@ export default function DrawerComponent(props) {
                 setDoctorId={setDoctorId}
                 service={props.service}
                 GetVisitTypePost={props.GetVisitTypePost}
+                GetDoctorsConsultationsByMainTypePost={props.GetDoctorsConsultationsByMainTypePost}
                 doctorSpecial={props.doctorSpecial}
-                doctor={props.doctor}
+                doctors={props.doctors}
                 setVisible={setVisible}
                 visible={visible}
             />
           </SwiperSlide>
           <SwiperSlide className="slide" virtualIndex={3}>
             <Type
-              doctorId={doctorId}
-              doctor={props.doctor}
-              comments={props.comments}
-              type={props.type}
-              setVisible={setVisible}
-              visible={visible}
+                GetDoctorsConsultationsByMainTypePost={props.GetDoctorsConsultationsByMainTypePost}
+                doctorId={doctorId}
+                consultations={props.consultations}
+                serviceId={serviceId}
+                CurrentDoctor={props.CurrentDoctor}
+                comments={props.comments}
+                type={props.type}
+                setVisible={setVisible}
+                visible={visible}
             />
           </SwiperSlide>
-          {/*<SwiperSlide className="slide">*/}
-          {/*  <PersonInfo doctor={props.doctor}   serviceId={serviceId}  doctorId={doctorId} type={props.type} />*/}
-          {/*</SwiperSlide>*/}
-          {/*<SwiperSlide className="slide">*/}
-          {/*  <Access setVisible={setVisible} visible={visible} />*/}
-          {/*</SwiperSlide>*/}
+          <SwiperSlide className="slide">
+            <PersonInfo
+                CurrentDoctor={props.CurrentDoctor}
+                doctorSpecial={props.doctorSpecial}
+                serviceId={serviceId}
+                doctorId={doctorId}
+                CurrentVisitType={props.CurrentVisitType}
+                SendMessagePost={props.SendMessagePost}
+            />
+          </SwiperSlide>
+          <SwiperSlide className="slide">
+            <Access setVisible={setVisible} visible={visible} />
+          </SwiperSlide>
         </Swiper>
       </Drawer>
     </>
