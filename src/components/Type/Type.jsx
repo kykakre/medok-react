@@ -21,7 +21,7 @@ const Type = (props) => {
       key={e.Id}
       Title={e.Title}
       Duration={e.Duration}
-      icon={e.icon}
+      ConsultationIconFilePath={e.ConsultationIconFilePath}
       valute={e.valute ?? "руб."}
       Price={e.Price}
     />

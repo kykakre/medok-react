@@ -18,6 +18,7 @@ export default function ServiceItem(props) {
           props.GetDoctorPost(1, props.Id)
           swiper.slideNext()
           props.setServiceId(props.Id)
+          window.scrollTo(0,0)
       }
       }>
         <div className={style.arrowIcon}></div>

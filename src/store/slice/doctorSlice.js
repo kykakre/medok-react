@@ -17,11 +17,16 @@ export const doctorSlice = createSlice({
   name: "doctor",
   initialState,
   reducers: {
+    DoctorsFetching(action) {
+      action.isLoading = true
+    },
     GetDoctors(state, action) {
       state.doctor = action.payload;
+      action.isLoading = false
     },
     SetDoctor(state, action) {
       state.CurrentDoctor = action.payload;
+      action.isLoading = false
     },
   }
 });
@@ -31,6 +36,7 @@ export const GetDoctorPost = (
     specializationId
 ) => {
   return async (dispatch) => {
+    dispatch(doctorSlice.actions.DoctorsFetching())
     const response = await GetDoctors(pageNumber, specializationId);
     dispatch(doctorSlice.actions.GetDoctors(response));
   };

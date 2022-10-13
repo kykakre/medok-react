@@ -58,6 +58,7 @@ export default function DrawerComponent(props) {
         >
           <SwiperSlide className="slide" virtualIndex={1}>
             <Service
+                serviceLoading={props.serviceLoading}
                 specialization={props.specialization}
                 GetDoctorPost={props.GetDoctorPost}
                 GetServicesPost={props.GetServicesPost}
@@ -78,6 +79,7 @@ export default function DrawerComponent(props) {
                 doctors={props.doctors}
                 setVisible={setVisible}
                 visible={visible}
+                doctorsLoading={props.doctorsLoading}
             />
           </SwiperSlide>
           <SwiperSlide className="slide" virtualIndex={3}>

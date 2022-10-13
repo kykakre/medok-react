@@ -9,7 +9,9 @@ import {SendMessagePost} from "../../store/slice/contentSlice.js";
 let mapStateToProps = (state) => {
   return {
     service: state.serviceReducer.service,
+      serviceLoading:state.serviceReducer.isLoading,
     doctors: state.doctorReducer.doctor.ListOfDoctors,
+      doctorsLoading:state.doctorReducer.isLoading,
     CurrentDoctor: state.doctorReducer.CurrentDoctor,
     doctorSpecial:state.doctorReducer.doctor.SpecializationTitle,
     type: state.typeReducer.type,

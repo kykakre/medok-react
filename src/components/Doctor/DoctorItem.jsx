@@ -54,6 +54,7 @@ export default function DoctorItem(props) {
       props.GetVisitTypePost(1, props.serviceId,props.Id)
       props.setDoctorId(props.Id)
       swiper.slideNext();
+      window.scrollTo(0,0)
 
     }}>
       <div className={style.arrowIcon}></div>

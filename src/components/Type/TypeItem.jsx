@@ -12,7 +12,7 @@ const TypeItem = (props) => {
             <div className={style.position}>
                 <div className={style.flex}>
                     <img
-                        src={props.icon}
+                        src={"https://medok-dev.spaceapp.ru/" + props.ConsultationIconFilePath}
                         className={style.img}
                     />
                     <div className={style.item}>
@@ -27,6 +27,7 @@ const TypeItem = (props) => {
             <div className="next arrow" onClick={()=> {
                 dispatch(typeSlice.actions.SetCurrentVisitType(props));
                 swiper.slideNext();
+                window.scrollTo(0,0)
 
             }}>
                 <div className="arrow__icon"></div>
