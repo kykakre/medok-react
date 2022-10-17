@@ -15,14 +15,24 @@ export const typeSlice = createSlice({
   name: "type",
   initialState,
   reducers: {
+    typesFetching(state){
+      state.isLoading = true;
+    },
     GetDoctorVisitType(state, action) {
       state.type = action.payload;
+      state.isLoading = false;
+
     },
     GetDoctorsConsultationsByMainType(state, action){
       state.Consultations = action.payload;
+      state.isLoading = false;
+
     },
     SetCurrentVisitType(state, action){
+
       state.CurrentVisitType = action.payload;
+      state.isLoading = false;
+
     }
   },
 });
@@ -32,6 +42,7 @@ export const GetVisitTypePost = (
     specializationId,doctorId
 ) => {
   return async (dispatch) => {
+    dispatch(typeSlice.actions.typesFetching())
     const response = await GetDoctorVisitType(pageNumber, specializationId,doctorId);
     dispatch(typeSlice.actions.GetDoctorVisitType(response));
   };
@@ -41,6 +52,7 @@ export const GetDoctorsConsultationsByMainTypePost = (
     specializationId, doctorId, consultationMainTypes
 ) => {
   return async (dispatch) => {
+    dispatch(typeSlice.actions.typesFetching())
     const response = await GetDoctorsConsultationsByMainType(pageNumber, specializationId, doctorId, consultationMainTypes);
     dispatch(typeSlice.actions.GetDoctorsConsultationsByMainType(response));
   };

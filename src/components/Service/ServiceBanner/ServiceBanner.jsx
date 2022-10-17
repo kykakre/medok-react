@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import style from "./ServiceBanner.module.scss";
 import pediator from "../../../assets/img/pediator.png";
 import { Modal } from "antd";
-export default function ServiceBanner() {
+import {useSwiper} from "swiper/react";
+export default function ServiceBanner(props) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-
+    const swiper = useSwiper();
   return (
     <>
       <div className={style.help} onClick={() => setModalIsOpen(true)}>
@@ -23,9 +24,13 @@ export default function ServiceBanner() {
           Если Вы не уверены, какой врач Вам нужен - вам подскажет терапевт,
           после консультации.
         </div>
-        <a href="#" className="modalHelp__btn">
+        <div onClick={()=>{
+            props.GetDoctorPost(1,1)
+            setModalIsOpen(false)
+            swiper.slideNext()
+        }} className="modalHelp__btn">
           К терапевту
-        </a>
+        </div>
         <div className="modalHelp__close" onClick={() => setModalIsOpen(false)}>
           Закрыть
         </div>

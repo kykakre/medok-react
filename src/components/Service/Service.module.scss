@@ -57,7 +57,6 @@
   font-size: 13px;
   &:hover {
     color: #464646;
-    background: #ffd12c;
   }
 }
 .activeTab {
@@ -137,4 +136,11 @@ input[type="checkbox"] + span {
 }
 input[type="checkbox"]:checked + span {
   background: #d9534f -19px top no-repeat;
+}
+.input{
+  display: none;
+}
+.input:checked + label{
+  background: #ff6d50;
+  color: #ffffff;
 }

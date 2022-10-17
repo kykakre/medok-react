@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Doctor.module.scss"
-import avatar from "../../assets/img/avatarDoctor.png"
+import avatar from "../../assets/doctor-male.svg"
 import { useSwiper } from 'swiper/react';
 import {doctorSlice} from "../../store/slice/doctorSlice.js";
 import {useDispatch} from "react-redux";

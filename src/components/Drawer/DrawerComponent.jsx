@@ -8,8 +8,6 @@ import Doctor from "../Doctor/Doctor";
 import Type from "../Type/Type.jsx";
 import PersonInfo from "../PersonInfo/PersonInfo.jsx";
 import Access from "../Access/Access.jsx";
-import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
-import {SendMessagePost} from "../../store/slice/contentSlice.js";
 export default function DrawerComponent(props) {
   const [visible, setVisible] = useState(false);
   const[serviceId,setServiceId] = useState();
@@ -30,6 +28,7 @@ export default function DrawerComponent(props) {
     <>
       <Button type="primary" onClick={()=>{
           showDrawer();
+          props.GetServicesPost("")
       }} >
         Открыть дравер
       </Button>
@@ -70,6 +69,7 @@ export default function DrawerComponent(props) {
           </SwiperSlide>
           <SwiperSlide className="slide" virtualIndex={2}>
             <Doctor
+                GetDoctorPost={props.GetDoctorPost}
                 serviceId={serviceId}
                 setDoctorId={setDoctorId}
                 service={props.service}

@@ -2,7 +2,6 @@ import React from "react";
 import Title from "../Title/Title";
 import DoctorItem from "./DoctorItem";
 import style from "./Doctor.module.scss";
-import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
 import Preloader from "../Preloader/Preloader.jsx";
 export default function Doctor(props) {
   const item = props.doctors.map((e) => (

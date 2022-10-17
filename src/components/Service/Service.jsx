@@ -31,18 +31,22 @@ export default function Service(props) {
       />
       <Search GetServicesPost={props.GetServicesPost}/>
         <div className={style.tabs}>
+            <Checkbox value={value} onClick={()=>setValue(!value)}>Премиум</Checkbox>
           <div className={style.tabsFlex}>
               {props.specialization.map((e)=>(
-                  <div className={style.tabsTab} key={e.SpecializationType} onClick={()=>props.GetServicesPost("",e.SpecializationType,value)}>
-                      {e.SpecializationTypeInStringFormat}
+                  <> <input className={style.input} type={"radio"} name="typeSpecialization" key={e.SpecializationType} value={e.SpecializationType} id={e.SpecializationType} onClick={()=>props.GetServicesPost("",e.SpecializationType,value)}>
 
-                  </div>
+                  </input>
+                      <label  className={style.tabsTab} htmlFor={e.SpecializationType}>{e.SpecializationTypeInStringFormat}</label>
+
+                  </>
+
               ))}
 
 
           </div>
 
-          <Checkbox value={value} onClick={()=>setValue(!value)}>Премиум</Checkbox>
+
         </div>
         <div className={style.special}>
             <TransitionGroup className={style.heightContent} children={item}>
@@ -51,7 +55,7 @@ export default function Service(props) {
 
         </div>
 
-      <ServiceBanner />
+      <ServiceBanner  GetDoctorPost={props.GetDoctorPost}/>
     </>
   );
 }

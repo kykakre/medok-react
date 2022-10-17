@@ -261,7 +261,6 @@ body {
     font-size: 13px;
     &:hover {
       color: #464646;
-      background: #ffd12c;
     }
   }
 }
@@ -356,6 +355,9 @@ body {
     cursor: pointer;
     object-fit: contain;
   }
+}
+.id1{
+  transform: rotate(180deg);
 }
 .fade-enter{
   opacity: 0;

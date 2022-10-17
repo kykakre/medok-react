@@ -4,7 +4,10 @@ import style from "./Preloader.module.scss"
 const Preloader = () => {
     return (
         <div className={style.preloader}>
-            <img src={logo} alt="logo" className={style.logo}/>
+            <div className={style.block}>
+                <img src={logo} alt="logo" className={style.logo}/>
+
+            </div>
         </div>
     );
 };

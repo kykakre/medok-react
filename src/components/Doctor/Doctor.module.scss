@@ -6,6 +6,15 @@
   object-position: center;
   margin-right: 15px;
   border-radius: 50%  ;
+  background: linear-gradient(319.25deg, #FF1FB1 -710.35%, #FFAE00 298.81%);
+}
+.container{
+  height: 92vh;
+
+  overflow: scroll;
+  &::-webkit-scrollbar{
+    width: 0;
+  }
 }
 .title {
   display: flex;
