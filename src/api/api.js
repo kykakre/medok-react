@@ -46,4 +46,12 @@ export const CreateMessageForConsultation = async (request) => {
         {RequestData: request});
     return response.data.ResponseData;
 }
+export const GetDoctorsReviews = async (doctorId) =>{
+    const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Doctors/GetDoctorsReviews",
+        {DoctorId: doctorId});
+    console.log(response.data)
+
+    return response.data;
+
+}
 

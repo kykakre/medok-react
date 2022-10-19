@@ -4,6 +4,7 @@ import TypeBanner from "./TypeBanner.jsx";
 import TypeItem from "./TypeItem.jsx";
 import style from "./Type.module.scss";
 import TypeDoctor from "./TypeDoctor.jsx";
+import Preloader from "../Preloader/Preloader.jsx"
 import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
 const Type = (props) => {
   let types = [];
@@ -38,10 +39,15 @@ const Type = (props) => {
         setVisible={props.setVisible}
         visible={props.visible}
       />
-        <TypeDoctor comments={props.comments} CurrentDoctor={props.CurrentDoctor} />
+      {props.getVisitTypePostLoading ? <Preloader/> :
+          <>
+            <TypeDoctor  GetDoctorsReviewsPost={props.GetDoctorsReviewsPost} comments={props.comments} CurrentDoctor={props.CurrentDoctor}/>
 
-      <TypeBanner />
-      <div className={style.typeContainer}> {typeItem[0]?typeItem:notType }</div>
+            <TypeBanner />
+            <div className={style.typeContainer}>{typeItem[0]?typeItem:notType} </div>
+          </>
+
+      }
     </div>
   );
 };

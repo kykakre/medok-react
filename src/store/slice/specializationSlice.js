@@ -15,7 +15,6 @@ export const specializationSlice = createSlice({
             state.isLoading = true;
         },
         GetSpecialization(state, action) {
-
             state.specialization = action.payload;
             state.isLoading = false;
 

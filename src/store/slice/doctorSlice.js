@@ -17,16 +17,16 @@ export const doctorSlice = createSlice({
   name: "doctor",
   initialState,
   reducers: {
-    DoctorsFetching(action) {
-      action.isLoading = true
+    DoctorsFetching(state) {
+      state.isLoading = true;
     },
     GetDoctors(state, action) {
       state.doctor = action.payload;
-      action.isLoading = false
+      state.isLoading = false;
     },
     SetDoctor(state, action) {
       state.CurrentDoctor = action.payload;
-      action.isLoading = false
+      state.isLoading = false;
     },
   }
 });

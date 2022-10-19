@@ -8,19 +8,19 @@ import close from "../../assets/img/close.svg";
 import avatar from "../../assets/img/avatarDoctor.png"
 const TypeDoctor = (props) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  // let item = props.comments.map((e) => (
-  //   <TypeComment
-  //     id={e.id}
-  //     key={e.id}
-  //     date={e.date}
-  //     person={e.person}
-  //     personCom={e.personCom}
-  //     status={e.status}
-  //     comment={e.comment}
-  //   />
-  // ));
-  const date = props.CurrentDoctor?.WorkStartDate ? new Date().getFullYear() - new Date(props.CurrentDoctor?.WorkStartDate).getFullYear() : "меньше года";
+  let item = props.comments.map((e) => (
+    <TypeComment
+      Id={e.Id}
+      key={e.Id}
+      Rating={e.Rating}
+      Comment={e.Comment}
+      PatientName={e.PatientName}
+      DateOfCreation={e.DateOfCreation}
 
+
+    />
+  ));
+  const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
   return (
     <div className={style.card}>
       <div className={style.position}>
@@ -35,15 +35,20 @@ const TypeDoctor = (props) => {
           <div className={style.grade}>
             <div className={style.item}>
               <img src={star} className={style.itemIcon} />
-              <div className={style.itemText}>3,5</div>
+              <div className={style.itemText}>{props.CurrentDoctor?.Rating?props.CurrentDoctor.Rating:"Нет оценок"}</div>
+
             </div>
             <div className={style.item}>
               <img src={message} className={style.itemIcon} />
               <div
                 className={style.itemText}
-                onClick={() => setModalIsOpen(true)}
+                onClick={() => {
+                  setModalIsOpen(true)
+                  props.GetDoctorsReviewsPost(props.CurrentDoctor.Id)
+                  console.log(props.CurrentDoctor.Id)
+                }}
               >
-                {props.CurrentDoctor?.review} отзывов
+                {props.CurrentDoctor?.NumberOfReviews} отзывов
               </div>
             </div>
           </div>
@@ -74,17 +79,17 @@ const TypeDoctor = (props) => {
           </div>
         </div>
       </div>
-      {/*<Modal footer={null} visible={modalIsOpen} closable={false}>*/}
-      {/*  <div className="modal__title">*/}
-      {/*    <div className="modal__text">Отзывы пациентов</div>*/}
-      {/*    <img*/}
-      {/*      src={close}*/}
-      {/*      className="modal__icon"*/}
-      {/*      onClick={() => setModalIsOpen(false)}*/}
-      {/*    />*/}
-      {/*  </div>*/}
-      {/*  <div className="comment">{item}</div>*/}
-      {/*</Modal>*/}
+      <Modal footer={null} visible={modalIsOpen} closable={false}>
+        <div className="modal__title">
+          <div className="modal__text">Отзывы пациентов</div>
+          <img
+            src={close}
+            className="modal__icon"
+            onClick={() => setModalIsOpen(false)}
+          />
+        </div>
+        <div className="comment">{item}</div>
+      </Modal>
     </div>
   );
 };

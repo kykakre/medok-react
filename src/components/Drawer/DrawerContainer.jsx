@@ -2,16 +2,16 @@ import { connect } from "react-redux";
 import DrawerComponent from "./DrawerComponent.jsx";
 import {GetServicesPost} from "../../store/slice/serviceSlice.js";
 import {GetDoctorPost} from "../../store/slice/doctorSlice.js";
-import {GetVisitTypePost} from "../../store/slice/typeSlice.js";
+import {GetDoctorsReviewsPost, GetVisitTypePost} from "../../store/slice/typeSlice.js";
 import {GetSpecializationPost} from "../../store/slice/specializationSlice.js";
 import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
 import {SendMessagePost} from "../../store/slice/contentSlice.js";
 let mapStateToProps = (state) => {
   return {
     service: state.serviceReducer.service,
-      serviceLoading:state.serviceReducer.isLoading,
+
     doctors: state.doctorReducer.doctor.ListOfDoctors,
-      doctorsLoading:state.doctorReducer.isLoading,
+
     CurrentDoctor: state.doctorReducer.CurrentDoctor,
     doctorSpecial:state.doctorReducer.doctor.SpecializationTitle,
     type: state.typeReducer.type,
@@ -19,6 +19,10 @@ let mapStateToProps = (state) => {
     specialization:state.specializationReducer.specialization,
     consultations:state.typeReducer.Consultations,
     CurrentVisitType:state.typeReducer.CurrentVisitType,
+      serviceLoading:state.serviceReducer.isLoading,
+      doctorsLoading:state.doctorReducer.isLoading,
+      getVisitTypePostLoading:state.typeReducer.isLoading,
+      getDoctorsConsultationsByMainTypePostLoading:state.typeReducer.isLoading,
   };
 };
 
@@ -28,6 +32,7 @@ const DrawerContainer = connect(mapStateToProps,
       GetVisitTypePost,
       GetSpecializationPost,
       GetDoctorsConsultationsByMainTypePost,
-      SendMessagePost
+      SendMessagePost,
+        GetDoctorsReviewsPost,
     })(DrawerComponent);
 export default DrawerContainer;

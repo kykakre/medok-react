@@ -1,6 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import travm1 from "../../assets/img/special1.png";
-import travm2 from "../../assets/img/special2.png";
 import {GetServices} from "../../api/api.js";
 const initialState = {
   service: [

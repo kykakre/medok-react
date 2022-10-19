@@ -1,17 +1,17 @@
 @import "../../style/Mixins.scss";
 
 .tabs {
-  display: flex;
   align-items: center;
   justify-content: space-between;
-  @include fluid(margin-bottom, 10px, 15px);
+  @include fluid(padding-bottom, 10px, 15px);
 }
 .tabsFlex {
   display: flex;
   align-items: center;
+  @include fluid(margin-bottom, 7px, 10px);
 }
 .heightContent{
-  height: 70vh;
+  height: 64vh;
   @include fluid(margin-bottom, 20px, 30px);
   overflow: scroll;
   &::-webkit-scrollbar {
@@ -84,6 +84,7 @@
   margin-bottom: 15px;
   overflow: hidden;
   z-index: 2;
+  cursor:pointer;
 }
 .cardFlex {
   position: relative;

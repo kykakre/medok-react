@@ -20,7 +20,6 @@ export default function Service(props) {
             setServiceId={props.setServiceId}
         />
         </CSSTransition>));
-    console.log(props.serviceLoading)
   return (
     <>
       <Title
@@ -31,20 +30,21 @@ export default function Service(props) {
       />
       <Search GetServicesPost={props.GetServicesPost}/>
         <div className={style.tabs}>
+            <div className={style.tabsFlex}>
+                {props.specialization.map((e)=>(
+                    <> <input className={style.input} type={"radio"} name="typeSpecialization" key={e.SpecializationType} value={e.SpecializationType} id={e.SpecializationType} onClick={()=>props.GetServicesPost("",e.SpecializationType,value)}>
+
+                    </input>
+                        <label  className={style.tabsTab} htmlFor={e.SpecializationType}>{e.SpecializationTypeInStringFormat}</label>
+
+                    </>
+
+                ))}
+
+
+            </div>
             <Checkbox value={value} onClick={()=>setValue(!value)}>Премиум</Checkbox>
-          <div className={style.tabsFlex}>
-              {props.specialization.map((e)=>(
-                  <> <input className={style.input} type={"radio"} name="typeSpecialization" key={e.SpecializationType} value={e.SpecializationType} id={e.SpecializationType} onClick={()=>props.GetServicesPost("",e.SpecializationType,value)}>
 
-                  </input>
-                      <label  className={style.tabsTab} htmlFor={e.SpecializationType}>{e.SpecializationTypeInStringFormat}</label>
-
-                  </>
-
-              ))}
-
-
-          </div>
 
 
         </div>

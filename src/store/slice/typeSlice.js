@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import micro from "../../assets/img/microphone-voice-recording.png"
-import {GetDoctors, GetDoctorsConsultationsByMainType, GetDoctorVisitType} from "../../api/api.js";
+import {GetDoctors, GetDoctorsConsultationsByMainType, GetDoctorsReviews, GetDoctorVisitType} from "../../api/api.js";
 import {doctorSlice} from "./doctorSlice.js";
 const initialState = {
   type: [
   ],
   CurrentVisitType:null,
   Consultations:[],
+  comments:[],
   isLoading: false,
   error: "",
 };
@@ -21,6 +22,11 @@ export const typeSlice = createSlice({
     GetDoctorVisitType(state, action) {
       state.type = action.payload;
       state.isLoading = false;
+
+    },
+    GetComments(state,action){
+      state.comments = action.payload;
+      state.isLoading= false;
 
     },
     GetDoctorsConsultationsByMainType(state, action){
@@ -57,6 +63,13 @@ export const GetDoctorsConsultationsByMainTypePost = (
     dispatch(typeSlice.actions.GetDoctorsConsultationsByMainType(response));
   };
 };
+export const GetDoctorsReviewsPost = (doctorId) =>{
+  return async (dispatch) => {
+    dispatch(typeSlice.actions.typesFetching())
+    const response = await GetDoctorsReviews(doctorId);
+    dispatch(typeSlice.actions.GetComments(response));
+  };
+}
 
 
 
