@@ -11,7 +11,8 @@ import {GetDoctorsConsultationsByMainTypePost, GetDoctorsReviewsPost} from "../.
 export default function DoctorItem(props) {
   const dispatch = useDispatch();
   const swiper = useSwiper();
-  const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
+  const date =  new Date().getFullYear() - new Date(props.CurrentDoctor.WorkStartDate).getFullYear();
+  // const date =  new Date(props.CurrentDoctor.WorkStartDate).getFullYear();
   return <div className={style.card}  onClick={()=> {
     dispatch(doctorSlice.actions.SetDoctor(props.CurrentDoctor));
     props.GetVisitTypePost(1, props.serviceId,props.Id)
@@ -47,16 +48,17 @@ export default function DoctorItem(props) {
           {props.CurrentDoctor.ScientificDegree?
           <div className={style.infoItem}>
             <div className={style.infoTitle}>Степень</div>
-            <div className={style.infoText}>{props.CurrentDoctor.ScientificDegree?props.CurrentDoctor.ScientificDegree:"Отсутствует"}</div>
+            <div className={style.infoText}>{props.CurrentDoctor.ScientificDegree}</div>
           </div>:<></>}
-          <div className={style.infoItem}>
+          {date === 0 ? <></>: <div className={style.infoItem}>
             <div className={style.infoTitle}>Стаж(в годах)</div>
             <div className={style.infoText}> {date} </div>
-          </div>
-          <div className={style.infoItem}>
+          </div>}
+          {props.CurrentDoctor.QualificationCategory? <div className={style.infoItem}>
             <div className={style.infoTitle}>Категория</div>
-            <div className={style.infoText}>{props.CurrentDoctor.QualificationCategory?props.CurrentDoctor.QualificationCategory:"Отсутсвует"}</div>
-          </div>
+            <div className={style.infoText}>{props.CurrentDoctor.QualificationCategory}</div>
+          </div>:<></>}
+
         </div>
       </div>
     </div>

@@ -8,7 +8,7 @@ import ServiceBanner from "./ServiceBanner/ServiceBanner";
 import { Checkbox } from "antd";
 import {CSSTransition,TransitionGroup} from "react-transition-group";
 export default function Service(props) {
-    const[value,setValue] = useState(true)
+    const[value,setValue] = useState(false)
     let item = props.service.map((e) => (
         <CSSTransition  timeout={2000} key={e.id} classNames="fade">
         <ServiceItem
@@ -32,10 +32,13 @@ export default function Service(props) {
         <div className={style.tabs}>
             <div className={style.tabsFlex}>
                 {props.specialization.map((e)=>(
-                    <> <input className={style.input} type={"radio"} name="typeSpecialization" key={e.SpecializationType} value={e.SpecializationType} id={e.SpecializationType} onClick={()=>props.GetServicesPost("",e.SpecializationType,value)}>
+                    <> <input className={style.input} type={"radio"} name="typeSpecialization" key={e.SpecializationType} value={e.SpecializationType} id={e.SpecializationType} onClick={()=> {
+                        props.GetServicesPost("", e.SpecializationType, value)
+
+                    }}>
 
                     </input>
-                        <label  className={style.tabsTab} htmlFor={e.SpecializationType}>{e.SpecializationTypeInStringFormat}</label>
+                        <label  className={style.tabsTab}  htmlFor={e.SpecializationType}>{e.SpecializationTypeInStringFormat}</label>
 
                     </>
 
@@ -43,7 +46,9 @@ export default function Service(props) {
 
 
             </div>
-            <Checkbox value={value} onClick={()=>setValue(!value)}>Премиум</Checkbox>
+            <Checkbox value={value} onClick={()=> {
+                setValue(!value)
+            }}>Премиум</Checkbox>
 
 
 
