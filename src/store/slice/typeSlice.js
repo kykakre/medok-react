@@ -7,7 +7,9 @@ const initialState = {
   ],
   CurrentVisitType:null,
   Consultations:[],
-  comments:[],
+  comments:{
+    DoctorsReviews:[]
+  },
   isLoading: false,
   error: "",
 };

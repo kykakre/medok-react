@@ -4,6 +4,7 @@ import DoctorItem from "./DoctorItem";
 import style from "./Doctor.module.scss";
 import Preloader from "../Preloader/Preloader.jsx";
 import {GetDoctorsReviewsPost} from "../../store/slice/typeSlice.js";
+import SearchDoctors from "../Search/SearchDoctors.jsx";
 export default function Doctor(props) {
   const item = props.doctors.map((e) => (
     <DoctorItem
@@ -17,6 +18,7 @@ export default function Doctor(props) {
       setDoctorId={props.setDoctorId}
       QualificationCategory={props.QualificationCategory}
       ScientificDegree={props.ScientificDegree}
+      GetDoctorsReviewsPost={props.GetDoctorsReviewsPost}
 
     />
   ));
@@ -28,6 +30,7 @@ export default function Doctor(props) {
         setVisible={props.setVisible}
         visible={props.visible}
       />
+        <SearchDoctors GetDoctorSearch={props.GetDoctorSearch}/>
       <div className={style.container}>{props.doctorsLoading?<Preloader/>:item}</div>
     </>
   );

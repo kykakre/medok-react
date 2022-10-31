@@ -41,7 +41,7 @@ const Type = (props) => {
       />
       {props.getVisitTypePostLoading ? <Preloader/> :
           <>
-            <TypeDoctor  GetDoctorsReviewsPost={props.GetDoctorsReviewsPost} comments={props.comments} CurrentDoctor={props.CurrentDoctor}/>
+            <TypeDoctor  GetDoctorsReviewsPost={props.GetDoctorsReviewsPost}  comments={props.comments} CurrentDoctor={props.CurrentDoctor}/>
 
             <TypeBanner />
             <div className={style.typeContainer}>{typeItem[0]?typeItem:notType} </div>

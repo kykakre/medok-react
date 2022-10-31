@@ -21,6 +21,8 @@ const PersonForm = (props) => {
                           ClientInfo:
                               {ClientPhoneNumber:phone,ClientFullName:fio, ClientDateOfBirth:birth, ClientsComment:comment}})
                       swiper.slideNext()
+                  }else{
+                      alert("Введите данные во все поля")
                   }
               }}
         >

@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import DrawerComponent from "./DrawerComponent.jsx";
 import {GetServicesPost} from "../../store/slice/serviceSlice.js";
-import {GetDoctorPost} from "../../store/slice/doctorSlice.js";
+import {GetDoctorPost, GetDoctorSearch} from "../../store/slice/doctorSlice.js";
 import {GetDoctorsReviewsPost, GetVisitTypePost} from "../../store/slice/typeSlice.js";
 import {GetSpecializationPost} from "../../store/slice/specializationSlice.js";
 import {GetDoctorsConsultationsByMainTypePost} from "../../store/slice/typeSlice.js";
@@ -15,7 +15,7 @@ let mapStateToProps = (state) => {
     CurrentDoctor: state.doctorReducer.CurrentDoctor,
     doctorSpecial:state.doctorReducer.doctor.SpecializationTitle,
     type: state.typeReducer.type,
-    comments: state.commentsReducer.comments,
+    comments: state.typeReducer.comments,
     specialization:state.specializationReducer.specialization,
     consultations:state.typeReducer.Consultations,
     CurrentVisitType:state.typeReducer.CurrentVisitType,
@@ -34,5 +34,7 @@ const DrawerContainer = connect(mapStateToProps,
       GetDoctorsConsultationsByMainTypePost,
       SendMessagePost,
         GetDoctorsReviewsPost,
+        GetDoctorSearch,
+
     })(DrawerComponent);
 export default DrawerContainer;

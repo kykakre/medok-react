@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import style from "../Doctor/Doctor.module.scss";
 import star from "../../assets/img/star.svg";
 import message from "../../assets/img/message.svg";
@@ -7,8 +7,16 @@ import TypeComment from "./TypeComment";
 import close from "../../assets/img/close.svg";
 import avatar from "../../assets/img/avatarDoctor.png"
 const TypeDoctor = (props) => {
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  let item = props.comments.map((e) => (
+
+
+
+  console.log(modalIsOpen)
+
+
+
+  let item = props.comments.DoctorsReviews?.map((e) => (
     <TypeComment
       Id={e.Id}
       key={e.Id}
@@ -20,7 +28,7 @@ const TypeDoctor = (props) => {
 
     />
   ));
-  const date = props.WorkStartDate ? new Date().getFullYear() - new Date(props.WorkStartDate).getFullYear() : "меньше года";
+  const date =  new Date().getFullYear() - new Date(props.CurrentDoctor?.WorkStartDate).getFullYear();
   return (
     <div className={style.card}>
       <div className={style.position}>
@@ -42,10 +50,12 @@ const TypeDoctor = (props) => {
               <img src={message} className={style.itemIcon} />
               <div
                 className={style.itemText}
-                onClick={() => {
+                onClick={(e) => {
+
                   setModalIsOpen(true)
-                  props.GetDoctorsReviewsPost(props.CurrentDoctor.Id)
-                  console.log(props.CurrentDoctor.Id)
+
+
+
                 }}
               >
                 {props.CurrentDoctor?.NumberOfReviews} отзывов
@@ -53,13 +63,14 @@ const TypeDoctor = (props) => {
             </div>
           </div>
           <div className={style.info}>
-            {/*<div className={style.infoItem}>*/}
-            {/*  <div className={style.infoTitle}>Степень</div>*/}
-            {/*  <div className={style.infoText}>{props.CurrentDoctor.degree}</div>*/}
-            {/*</div>*/}
-            <div className={style.infoItem}>
+            {props.CurrentDoctor?.ScientificDegree?<div className={style.infoItem}>
+              <div className={style.infoTitle}>Степень</div>
+              <div className={style.infoText}>{props.CurrentDoctor.ScientificDegree}</div>
+            </div>:<></>}
+            {date? <div className={style.infoItem}>
               <div className={style.infoTitle}>Стаж(в годах)</div>
-              <div className={style.infoText}> {date} </div> </div>
+              <div className={style.infoText}> {date} </div> </div>:null}
+
             {
               props.CurrentDoctor?.QualificationCategory ?
                 <div className={style.infoItem}>

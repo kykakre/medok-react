@@ -11,12 +11,12 @@ import {GetDoctorsConsultationsByMainTypePost, GetDoctorsReviewsPost} from "../.
 export default function DoctorItem(props) {
   const dispatch = useDispatch();
   const swiper = useSwiper();
-  const date =  new Date().getFullYear() - new Date(props.CurrentDoctor.WorkStartDate).getFullYear();
+  const date =  new Date().getFullYear() - new Date(props.CurrentDoctor?.WorkStartDate).getFullYear();
   // const date =  new Date(props.CurrentDoctor.WorkStartDate).getFullYear();
   return <div className={style.card}  onClick={()=> {
     dispatch(doctorSlice.actions.SetDoctor(props.CurrentDoctor));
     props.GetVisitTypePost(1, props.serviceId,props.Id)
-
+    props.GetDoctorsReviewsPost(props.CurrentDoctor.Id)
     props.setDoctorId(props.Id)
     swiper.slideNext();
     window.scrollTo(0,0)

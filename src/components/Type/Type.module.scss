@@ -95,7 +95,7 @@
   }
 }
 .not{
-  @include fluid(font-size,18px, 24px);
+  @include fluid(font-size,14px, 18px);
   font-weight: 600;
   color: #999999;
 }

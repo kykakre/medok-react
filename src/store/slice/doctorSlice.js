@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import avatar from "../../assets/img/avatarDoctor.png";
-import {GetDoctors, GetServices} from "../../api/api.js";
+import {GetDoctors, GetDoctorsSearch, GetServices} from "../../api/api.js";
 import {serviceSlice} from "./serviceSlice.js";
 const initialState = {
   doctor:{
@@ -38,6 +38,16 @@ export const GetDoctorPost = (
   return async (dispatch) => {
     dispatch(doctorSlice.actions.DoctorsFetching())
     const response = await GetDoctors(pageNumber, specializationId);
+    dispatch(doctorSlice.actions.GetDoctors(response));
+  };
+};
+
+export const GetDoctorSearch = (
+    namesSearchString
+) => {
+  return async (dispatch) => {
+    dispatch(doctorSlice.actions.DoctorsFetching())
+    const response = await GetDoctorsSearch(namesSearchString);
     dispatch(doctorSlice.actions.GetDoctors(response));
   };
 };

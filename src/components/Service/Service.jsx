@@ -10,7 +10,7 @@ import {CSSTransition,TransitionGroup} from "react-transition-group";
 export default function Service(props) {
     const[value,setValue] = useState(false)
     let item = props.service.map((e) => (
-        <CSSTransition  timeout={2000} key={e.id} classNames="fade">
+        <CSSTransition  timeout={2000} key={e.Id} classNames="fade">
         <ServiceItem
             Id={e.Id}
             key={e.Id}

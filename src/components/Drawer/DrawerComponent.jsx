@@ -9,6 +9,7 @@ import Type from "../Type/Type.jsx";
 import PersonInfo from "../PersonInfo/PersonInfo.jsx";
 import Access from "../Access/Access.jsx";
 import {GetDoctorsReviewsPost} from "../../store/slice/typeSlice.js";
+import {GetDoctorSearch} from "../../store/slice/doctorSlice.js";
 export default function DrawerComponent(props) {
   const [visible, setVisible] = useState(false);
   const[serviceId,setServiceId] = useState();
@@ -70,6 +71,7 @@ export default function DrawerComponent(props) {
           </SwiperSlide>
           <SwiperSlide className="slide" virtualIndex={2}>
             <Doctor
+                GetDoctorSearch={props.GetDoctorSearch}
                 GetDoctorPost={props.GetDoctorPost}
                 serviceId={serviceId}
                 setDoctorId={setDoctorId}
@@ -82,6 +84,8 @@ export default function DrawerComponent(props) {
                 visible={visible}
                 doctorsLoading={props.doctorsLoading}
                 GetDoctorsReviewsPost={props.GetDoctorsReviewsPost}
+
+
             />
           </SwiperSlide>
           <SwiperSlide className="slide" virtualIndex={3}>
@@ -98,6 +102,7 @@ export default function DrawerComponent(props) {
                 getVisitTypePostLoading={props.getVisitTypePostLoading}
                 getDoctorsConsultationsByMainTypePostLoading={props.getDoctorsConsultationsByMainTypePostLoading}
                 GetDoctorsReviewsPost={props.GetDoctorsReviewsPost}
+
             />
           </SwiperSlide>
           <SwiperSlide className="slide">
