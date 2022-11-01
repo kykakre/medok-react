@@ -13,6 +13,7 @@ const rootReducer = combineReducers({
   contentReducer,
   commentsReducer,
   specializationReducer,
+
 });
 
 export const setupStore = () => {

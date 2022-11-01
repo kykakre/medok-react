@@ -13,6 +13,7 @@
   background: #ececec;
   border-radius: 10px 0px 0px 10px;
 }
+
 .selectInput{
   width: 150px;
   height: 40px;
@@ -43,7 +44,14 @@
     &::placeholder {
       color: #999999;
     }
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+
+    -webkit-appearance: none;
+    margin: 0;
+  }
 }
+
 .formFlex{
     display: flex;
     align-items: center;
@@ -64,7 +72,9 @@
 
 
 
-
+  .noActive{
+    border:1px red solid;
+  }
 }
 .description {
   text-align: center;

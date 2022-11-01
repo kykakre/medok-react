@@ -5,6 +5,7 @@ import Title from "../Title/Title.jsx";
 import qr from "../../assets/img/qr.svg"
 import link from "../../assets/img/link.svg"
 const Access = (props) => {
+    debugger
     return (
         <>
             <Title setVisible={props.setVisible}
@@ -31,6 +32,7 @@ const Access = (props) => {
                         <img src={qr} className={style.accessLinkIcon}/>
                         <div>QR-код</div>
                     </NavLink>
+                    <img src={props.qr?.QrCode}/>
                 </div>
             </div>
         </>

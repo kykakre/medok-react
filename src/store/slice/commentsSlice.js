@@ -3,8 +3,9 @@ import {CreateMessageForConsultation, GetDoctors} from "../../api/api.js";
 import {doctorSlice} from "./doctorSlice.js";
 
 const initialState = {
-  comments: [
-  ],
+  qr: {
+    QrCode:"",
+  },
   isLoading: false,
   error: "",
 };
@@ -14,7 +15,8 @@ export const commentsSlice = createSlice({
   initialState,
   reducers: {
     CreateMessageForConsultation(state, action) {
-      state.comments = action.payload;
+      state.qr = action.payload;
+
     },
   },
 });

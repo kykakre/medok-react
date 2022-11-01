@@ -11,7 +11,7 @@ let mapStateToProps = (state) => {
     service: state.serviceReducer.service,
 
     doctors: state.doctorReducer.doctor.ListOfDoctors,
-
+    qr:state.commentsReducer.qr.QrCode,
     CurrentDoctor: state.doctorReducer.CurrentDoctor,
     doctorSpecial:state.doctorReducer.doctor.SpecializationTitle,
     type: state.typeReducer.type,

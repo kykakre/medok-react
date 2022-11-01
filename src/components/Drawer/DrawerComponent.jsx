@@ -14,7 +14,6 @@ export default function DrawerComponent(props) {
   const [visible, setVisible] = useState(false);
   const[serviceId,setServiceId] = useState();
   const[ doctorId,setDoctorId] = useState(0)
-
     useEffect(() =>{
         props.GetSpecializationPost();
     }, [])
@@ -116,8 +115,9 @@ export default function DrawerComponent(props) {
             />
           </SwiperSlide>
           <SwiperSlide className="slide">
-            <Access setVisible={setVisible} visible={visible} />
+            <Access setVisible={setVisible} qr={props.qr} visible={visible} />
           </SwiperSlide>
+
         </Swiper>
       </Drawer>
     </>

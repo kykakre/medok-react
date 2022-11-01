@@ -22,7 +22,7 @@ const PersonForm = (props) => {
                               {ClientPhoneNumber:phone,ClientFullName:fio, ClientDateOfBirth:birth, ClientsComment:comment}})
                       swiper.slideNext()
                   }else{
-                      alert("Введите данные во все поля")
+                      alert("Введите данные во все красные поля")
                   }
               }}
         >
@@ -31,16 +31,18 @@ const PersonForm = (props) => {
                 <input
                     placeholder="Введите ФИО"
                     type="text"
-                    className={style.formInput}
+                    className={fio === "" ?`${style.formInput} ${style.noActive}` : `${style.formInput} `  }
                     value={fio}
                     onChange={(e)=>{setFio(e.target.value)}}
                 />
             </div>
             <div className={style.formItem}>
                 <div className={style.formTitle}>Дата рождения</div>
-                <input placeholder="1.12.02" type="date" className={style.formInput}
+                <input placeholder="1.12.02" type="date" className={birth === "" ?`${style.formInput} ${style.noActive}` : `${style.formInput} `  }
                        value={birth}
-                       onChange={(e)=>{setBirth(e.target.value)}}/>
+                       onChange={(e)=>{
+
+                           setBirth(e.target.value)}}/>
             </div>
             <div className={style.formItemMax}>
                 <div className={style.formTitle}>Оставьте комментарий для врача</div>
@@ -64,8 +66,8 @@ const PersonForm = (props) => {
                             +7
                         </Option>
                     </Select>
-                    <input className={style.selectInput} value={phone}
-                    onChange={(e)=>{setPhone(e.target.value)}}/>
+                    <input type={"number"}   placeholder={"(900)456-78-91"} className={phone === "" ?`${style.formInput} ${style.noActive}` : `${style.formInput} `  } value={phone}
+                           onChange={(e)=>{setPhone(e.target.value)}}/>
                 </div>
             </div>
             <input type="submit" className="form__btn next"/>

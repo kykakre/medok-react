@@ -44,12 +44,13 @@ export const GetDoctorsConsultationsByMainType = async (pageNumber, specializati
 export const CreateMessageForConsultation = async (request) => {
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Service/CreateMessageForConsultation",
         {RequestData: request});
+    console.log(response.data)
+
     return response.data.ResponseData;
 }
 export const GetDoctorsReviews = async (doctorId) => {
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Doctors/GetDoctorsReviews",
         {RequestData: {DoctorId: doctorId}});
-    console.log(response.data)
 
     return response.data.ResponseData;
 
@@ -59,7 +60,6 @@ export const GetDoctorsReviews = async (doctorId) => {
 export const GetDoctorsSearch = async (namesSearchString) => {
     const response = await axios.post("https://plugin-medok.spaceapp.ru/ApiConsultations/Doctors/GetDoctorsByName",
         {RequestData: {NamesSearchString: namesSearchString}});
-    console.log(response.data)
 
     return response.data.ResponseData;
 
